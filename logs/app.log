@@ -175,3 +175,19 @@
 16:47:22.678 [TestNG-tests-1] INFO  tests.TC001_AccountRegistration - Screenshot saved at: screenshots/verifyAccountRegistration_failed_1768668442565.png
 16:47:23.379 [TestNG-tests-1] INFO  tests.TC001_AccountRegistration - Webdriver quit
 16:47:41.482 [TestNG-tests-2] INFO  tests.TC001_AccountRegistration - Webdriver quit
+17:16:52.072 [main] INFO  tests.TC001_AccountRegistration - Setting up WebDriver...
+17:16:56.465 [main] INFO  tests.TC001_AccountRegistration - WebDriver initialized
+17:16:56.487 [main] INFO  tests.TC001_AccountRegistration - Starting test: verifyAccountRegistration | Class: TC001_AccountRegistration | Thread: main | OS: Linux | Browser: Firefox
+17:16:56.491 [main] INFO  tests.TC001_AccountRegistration - Starting account registration test
+17:16:56.491 [main] INFO  tests.TC001_AccountRegistration - Navigating to Registration page
+17:16:56.601 [main] INFO  tests.TC001_AccountRegistration - Clicked 'My Account' link
+17:16:57.484 [main] INFO  tests.TC001_AccountRegistration - Clicked 'Register' link
+17:16:57.485 [main] INFO  tests.TC001_AccountRegistration - Entering test data: First Name = El, Last Name = John, Email = emailo@example.com
+17:16:57.800 [main] INFO  tests.TC001_AccountRegistration - Clicking continue button.
+17:16:58.428 [main] INFO  tests.TC001_AccountRegistration - Verifying account registration success
+17:16:58.428 [main] INFO  tests.TC001_AccountRegistration - Checking if success message is displayed
+17:17:08.450 [main] ERROR tests.TC001_AccountRegistration - Test case failed: Confirmation message not present. expected [true] but found [false]
+17:17:08.456 [main] ERROR tests.TC001_AccountRegistration - Test failed: verifyAccountRegistration
+17:17:08.456 [main] INFO  tests.TC001_AccountRegistration - Taking screenshot
+17:17:08.536 [main] INFO  tests.TC001_AccountRegistration - Screenshot saved at: screenshots/verifyAccountRegistration_failed_1768670228456.png
+17:17:09.204 [main] INFO  tests.TC001_AccountRegistration - Webdriver quit

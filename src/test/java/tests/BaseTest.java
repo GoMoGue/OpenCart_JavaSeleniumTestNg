@@ -9,20 +9,24 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.SkipException;
 import org.testng.annotations.*;
+import utils.ConfigFileLoader;
 import utils.ScreenshotUtils;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
+import java.util.Properties;
 
 
 public class BaseTest {
 
     private String braveBrowserLocation = "/var/lib/flatpak/exports/bin/com.brave.Browser";
+    private String configFileLocation = "./src/test/resources/config.properties";
     private WebDriver driver;
     private Logger logger;
     private String browser;
     private String os;
+    private Properties properties;
 
     public WebDriver getDriver() {
         return driver;
@@ -30,6 +34,10 @@ public class BaseTest {
 
     public Logger getLogger() {
         return logger;
+    }
+
+    public Properties getProperties() {
+        return properties;
     }
 
     @BeforeClass
@@ -40,6 +48,13 @@ public class BaseTest {
         this.browser = browser;
         this.os = os;
 
+        // Load config.properties file
+        try {
+            this.properties = ConfigFileLoader.loadPropertiesFile(configFileLocation);
+        } catch (IOException e) {
+            logger.error("Cannot load properties file: {}.", e.getMessage());
+            throw new SkipException("Skipping test: could not read properties file");
+        }
 
         switch (browser.toLowerCase()) {
             case "firefox":
@@ -57,7 +72,7 @@ public class BaseTest {
 
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://tutorialsninja.com/demo/");
+        driver.get(properties.getProperty("appURL"));
         driver.manage().window().maximize();
         logger.info("WebDriver initialized");
     }
@@ -66,9 +81,9 @@ public class BaseTest {
     public void logTestDetails(Method method) {
         logger.info(
                 "Starting test: {} | Class: {} | Thread: {} | OS: {} | Browser: {}",
-                method.getName(),
-                method.getDeclaringClass().getSimpleName(), // Class name
-                Thread.currentThread().getName(),          // Thread name
+                method.getName(),                           // Test Method name
+                method.getDeclaringClass().getSimpleName(), // Test Class name
+                Thread.currentThread().getName(),           // Thread name
                 os,
                 browser
         );
