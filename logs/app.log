@@ -1,0 +1,15 @@
+15:24:18.342 [main] INFO  tests.TC001_AccountRegistration - Setting up WebDriver...
+15:24:23.411 [main] INFO  tests.TC001_AccountRegistration - WebDriver initialized
+15:24:23.416 [main] INFO  tests.TC001_AccountRegistration - Starting account registration test
+15:24:23.417 [main] INFO  tests.TC001_AccountRegistration - Navigating to Registration page
+15:24:23.541 [main] INFO  tests.TC001_AccountRegistration - Clicked 'My Account' link
+15:24:24.491 [main] INFO  tests.TC001_AccountRegistration - Clicked 'Register' link
+15:24:24.493 [main] INFO  tests.TC001_AccountRegistration - Entering test data: First Name = El, Last Name = John, Email = emailo@example.com
+15:24:24.778 [main] INFO  tests.TC001_AccountRegistration - Clicking continue button.
+15:24:25.599 [main] INFO  tests.TC001_AccountRegistration - Verifying account registration success
+15:24:25.599 [main] INFO  tests.TC001_AccountRegistration - Checking if success message is displayed
+15:24:35.622 [main] ERROR tests.TC001_AccountRegistration - Test case failed: Confirmation message not present. expected [true] but found [false]
+15:24:35.642 [main] ERROR tests.TC001_AccountRegistration - Test failed: verifyAccountRegistration
+15:24:35.642 [main] INFO  tests.TC001_AccountRegistration - Taking screenshot
+15:24:35.749 [main] INFO  tests.TC001_AccountRegistration - Screenshot saved at: screenshots/verifyAccountRegistration_failed_1768663475642.png
+15:24:36.417 [main] INFO  tests.TC001_AccountRegistration - Webdriver quit
