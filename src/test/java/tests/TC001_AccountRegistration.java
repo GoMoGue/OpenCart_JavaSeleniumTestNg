@@ -32,12 +32,12 @@ public class TC001_AccountRegistration extends BaseTest {
 
             // Registration form
             RegistrationPage registrationPage = new RegistrationPage(getDriver());
-            registrationPage.setFirstName(firstName);
-            registrationPage.setLastName(lastName);
-            registrationPage.setEmail(email);
-            registrationPage.setTelephone(telephone);
-            registrationPage.setPassword(password);
-            registrationPage.setConfirmPassword(password);
+            registrationPage.typeFirstName(firstName);
+            registrationPage.typeLastName(lastName);
+            registrationPage.typeEmail(email);
+            registrationPage.typeTelephone(telephone);
+            registrationPage.typePassword(password);
+            registrationPage.typeConfirmPassword(password);
             registrationPage.agreePrivacyPolicy();
             registrationPage.agreeNewsletter();
             getLogger().info("Clicking continue button.");

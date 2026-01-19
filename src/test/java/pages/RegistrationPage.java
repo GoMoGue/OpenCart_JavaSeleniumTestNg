@@ -16,6 +16,8 @@ import java.util.List;
 
 public class RegistrationPage extends BasePage {
 
+    private static final String PAGE_URL = "https://tutorialsninja.com/demo/index.php?route=account/register";
+
     @FindBy(xpath = "//input[@id='input-firstname']")
     private WebElement txtFirstName;
     @FindBy(xpath = "//input[@id='input-lastname']")
@@ -43,32 +45,33 @@ public class RegistrationPage extends BasePage {
         super(driver);
     }
 
-    public void setFirstName(String firstName) {
+    public void typeFirstName(String firstName) {
         txtFirstName.clear();
         txtFirstName.sendKeys(firstName);
     }
 
-    public void setLastName(String lastName) {
+    public void typeLastName(String lastName) {
         txtLastName.clear();
         txtLastName.sendKeys(lastName);
+
     }
 
-    public void setTelephone(String telephone) {
+    public void typeTelephone(String telephone) {
         txtTelephone.clear();
         txtTelephone.sendKeys(telephone);
     }
 
-    public void setEmail(String email) {
+    public void typeEmail(String email) {
         txtEmail.clear();
         txtEmail.sendKeys(email);
     }
 
-    public void setPassword(String password) {
+    public void typePassword(String password) {
         txtPassword.clear();
         txtPassword.sendKeys(password);
     }
 
-    public void setConfirmPassword(String password) {
+    public void typeConfirmPassword(String password) {
         txtConfirmPassword.clear();
         txtConfirmPassword.sendKeys(password);
     }
@@ -87,7 +90,7 @@ public class RegistrationPage extends BasePage {
 
     public void clickContinue() {
         //buttonContinue.sendKeys(Keys.ENTER);
-        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(buttonContinue)).click();
     }
 
@@ -96,13 +99,13 @@ public class RegistrationPage extends BasePage {
     }
 
     public boolean existsSuccessMessage() {
-        List<WebElement> successMessage =  driver.findElements(By.xpath("//h1[normalize-space()='Your Account Has Been Created!']"));
+        List<WebElement> successMessage =  getDriver().findElements(By.xpath("//h1[normalize-space()='Your Account Has Been Created!']"));
         return !successMessage.isEmpty();
     }
 
     public String getConfirmationMessage() {
         try {
-            WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
             return wait.until(ExpectedConditions.visibilityOf(successMessage)).getText();
         } catch (TimeoutException e) {
             throw new RuntimeException("Confirmation message not displayed within the expected time: " + e.getMessage());

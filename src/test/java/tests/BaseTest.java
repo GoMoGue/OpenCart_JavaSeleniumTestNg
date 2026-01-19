@@ -72,7 +72,7 @@ public class BaseTest {
 
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(properties.getProperty("appURL"));
+        driver.get(properties.getProperty("homePageURL"));
         driver.manage().window().maximize();
         logger.info("WebDriver initialized");
     }
