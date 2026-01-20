@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.RegistrationPage;
 
+import java.util.Properties;
+
 public class TC001_AccountRegistration extends BaseTest {
 
     private static final String EXPECTED_CONFIRMATION_MESSAGE = "Your Account Has Been Created!";
@@ -23,12 +25,13 @@ public class TC001_AccountRegistration extends BaseTest {
             getLogger().info("Clicked 'Register' link");
 
             // Test data
+            Properties properties = getProperties();
             String firstName = "El";
             String lastName = "John";
-            String email = "emailo@example.com";
+            String email = properties.getProperty("email");
             String telephone = "1234567890";
-            String password = "securePassword123";
-            getLogger().info("Entering test data: First Name = {}, Last Name = {}, Email = {}", firstName, lastName, email);
+            String password = properties.getProperty("password");
+            getLogger().info("Entering test data: Email = {}; password = {}", email, password);
 
             // Registration form
             RegistrationPage registrationPage = new RegistrationPage(getDriver());

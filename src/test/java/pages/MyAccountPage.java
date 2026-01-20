@@ -11,6 +11,9 @@ public class MyAccountPage extends BasePage {
 
     @FindBy(xpath = "//h2[normalize-space()='My Account']")
     private WebElement headerAccountSection;
+    @FindBy(xpath = "//a[@class='list-group-item'][normalize-space()='Logout']")
+    private WebElement logOutOption;
+
 
     public MyAccountPage(WebDriver driver) {
         super(driver);
@@ -27,5 +30,9 @@ public class MyAccountPage extends BasePage {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public void clickLogout() {
+        logOutOption.click();
     }
 }
