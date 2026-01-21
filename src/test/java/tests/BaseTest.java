@@ -89,21 +89,21 @@ public class BaseTest {
         );
     }
 
-    @AfterMethod
-    public void captureScreenshotOnFailure(ITestResult result) {
-        // Capture screenshot if driver not null and test case failed
-        if (driver != null && result.getStatus() == ITestResult.FAILURE) {
-            logger.error("Test failed: {}", result.getName());
-            logger.info("Taking screenshot");
-            String screenshotName = "screenshots/" + result.getName() + "_failed_" + System.currentTimeMillis() + ".png";
-            try {
-                ScreenshotUtils.captureFullViewPortScreenshot(driver, screenshotName);
-            } catch (IOException e) {
-                logger.error("Failed to capture screenshot: {}", e.getMessage());
-            }
-            logger.info("Screenshot saved at: {}", screenshotName);
-        }
-    }
+//    @AfterMethod
+//    public void captureScreenshotOnFailure(ITestResult result) {
+//        // Capture screenshot if driver not null and test case failed
+//        if (driver != null && result.getStatus() == ITestResult.FAILURE) {
+//            logger.error("Test failed: {}", result.getName());
+//            logger.info("Taking screenshot");
+//            String screenshotName = "screenshots/" + result.getName() + "_failed_" + System.currentTimeMillis() + ".png";
+//            try {
+//                ScreenshotUtils.captureFullViewPortScreenshot(driver, screenshotName);
+//            } catch (IOException e) {
+//                logger.error("Failed to capture screenshot: {}", e.getMessage());
+//            }
+//            logger.info("Screenshot saved at: {}", screenshotName);
+//        }
+//    }
 
     @AfterClass
     public void tearDown() {

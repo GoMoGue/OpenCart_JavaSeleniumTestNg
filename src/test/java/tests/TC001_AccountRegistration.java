@@ -15,58 +15,50 @@ public class TC001_AccountRegistration extends BaseTest {
     public void verifyAccountRegistration() {
         getLogger().info("Starting account registration test");
 
-        try {
-            // Navigation
-            getLogger().info("Navigating to Registration page");
-            HomePage homePage = new HomePage(getDriver());
-            homePage.clickMyAccount();
-            getLogger().info("Clicked 'My Account' link");
-            homePage.clickRegister();
-            getLogger().info("Clicked 'Register' link");
+        // Navigation
+        getLogger().info("Navigating to Registration page");
+        HomePage homePage = new HomePage(getDriver());
+        homePage.clickMyAccount();
+        getLogger().info("Clicked 'My Account' link");
+        homePage.clickRegister();
+        getLogger().info("Clicked 'Register' link");
 
-            // Test data
-            Properties properties = getProperties();
-            String firstName = "El";
-            String lastName = "John";
-            String email = properties.getProperty("email");
-            String telephone = "1234567890";
-            String password = properties.getProperty("password");
-            getLogger().info("Entering test data: Email = {}; password = {}", email, password);
+        // Test data
+        Properties properties = getProperties();
+        String firstName = "El";
+        String lastName = "John";
+        String email = properties.getProperty("email");
+        String telephone = "1234567890";
+        String password = properties.getProperty("password");
+        getLogger().info("Entering test data: Email = {}; password = {}", email, password);
 
-            // Registration form
-            RegistrationPage registrationPage = new RegistrationPage(getDriver());
-            registrationPage.typeFirstName(firstName);
-            registrationPage.typeLastName(lastName);
-            registrationPage.typeEmail(email);
-            registrationPage.typeTelephone(telephone);
-            registrationPage.typePassword(password);
-            registrationPage.typeConfirmPassword(password);
-            registrationPage.agreePrivacyPolicy();
-            registrationPage.agreeNewsletter();
-            getLogger().info("Clicking continue button.");
-            registrationPage.clickContinue();
+        // Registration form
+        RegistrationPage registrationPage = new RegistrationPage(getDriver());
+        registrationPage.typeFirstName(firstName);
+        registrationPage.typeLastName(lastName);
+        registrationPage.typeEmail(email);
+        registrationPage.typeTelephone(telephone);
+        registrationPage.typePassword(password);
+        registrationPage.typeConfirmPassword(password);
+        registrationPage.agreePrivacyPolicy();
+        registrationPage.agreeNewsletter();
+        getLogger().info("Clicking continue button.");
+        registrationPage.clickContinue();
 
-            // Verification
-            getLogger().info("Verifying account registration success");
+        // Verification
+        getLogger().info("Verifying account registration success");
 
-            getLogger().info("Checking if success message is displayed");
-            Assert.assertTrue(registrationPage.existsSuccessMessage(),
-                    "Confirmation message not present.");
-            getLogger().info("Success message is displayed");
+        getLogger().info("Checking if success message is displayed");
+        Assert.assertTrue(registrationPage.existsSuccessMessage(),
+                "Confirmation message not present.");
+        getLogger().info("Success message is displayed");
 
-            getLogger().info("Verifying confirmation message text");
-            Assert.assertEquals(registrationPage.getConfirmationMessage(),
-                    EXPECTED_CONFIRMATION_MESSAGE,
-                    "Confirmation message text does not match.");
-            getLogger().info("Confirmation message matches expected text");
+        getLogger().info("Verifying confirmation message text");
+        Assert.assertEquals(registrationPage.getConfirmationMessage(),
+                EXPECTED_CONFIRMATION_MESSAGE,
+                "Confirmation message text does not match.");
+        getLogger().info("Confirmation message matches expected text");
 
-            getLogger().info("Account registration test completed successfully");
-        } catch (AssertionError assertionError) {
-            getLogger().error("Test case failed: {}",  assertionError.getMessage());
-            throw assertionError;
-        } catch (Exception e) {
-            getLogger().error("Test case failed due to unexpected error: {}", e.getMessage());
-            Assert.fail();
-        }
+        getLogger().info("Account registration test completed successfully");
     }
 }

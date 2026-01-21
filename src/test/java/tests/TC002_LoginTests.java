@@ -33,34 +33,25 @@ public class TC002_LoginTests extends BaseTest{
     @Test(priority = 1)
     public void testLoginWithValidCredentials() {
 
-        try {
-            navigateToLoginPage();
+        navigateToLoginPage();
 
-            // Test data
-            getLogger().info("Retrieving test data from config file");
-            String email = getProperties().getProperty("email");
-            String password = getProperties().getProperty("password");
+        // Test data
+        getLogger().info("Retrieving test data from config file");
+        String email = getProperties().getProperty("email");
+        String password = getProperties().getProperty("password");
 
-            performLoginAction(email, password);
+        performLoginAction(email, password);
 
-            // Verification
-            getLogger().info("Verifying Login success");
-            MyAccountPage myAccountPage = new MyAccountPage(getDriver());
-            String expectedUrl = getProperties().getProperty("myAccountPageURL");
-            SoftAssert softAssert = new SoftAssert();
-            softAssert.assertEquals(getDriver().getCurrentUrl(), expectedUrl, "URL mismatch");
-            softAssert.assertEquals(getDriver().getTitle(), "My Account", "Title mismatch");
-            softAssert.assertTrue(myAccountPage.existsAccountHeader(), "My Account header not present");
-            softAssert.assertAll();
-            getLogger().info("Login test completed successfully");
-
-        } catch (AssertionError assertionError) {
-            getLogger().error("Test case failed: {}",  assertionError.getMessage());
-            throw assertionError;
-        } catch (Exception e) {
-            getLogger().error("Test case failed due to unexpected error: {}", e.getMessage());
-            Assert.fail();
-        }
+        // Verification
+        getLogger().info("Verifying Login success");
+        MyAccountPage myAccountPage = new MyAccountPage(getDriver());
+        String expectedUrl = getProperties().getProperty("myAccountPageURL");
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(getDriver().getCurrentUrl(), expectedUrl, "URL mismatch");
+        softAssert.assertEquals(getDriver().getTitle(), "My Account", "Title mismatch");
+        softAssert.assertTrue(myAccountPage.existsAccountHeader(), "My Account header not present");
+        softAssert.assertAll();
+        getLogger().info("Login test completed successfully");
     }
 
     @Test(
@@ -70,36 +61,27 @@ public class TC002_LoginTests extends BaseTest{
     )
     public void testLoginWithInvalidCredentials(String email, String password, String expectedErrorMessage) {
 
-        try {
-            navigateToLoginPage();
+        navigateToLoginPage();
 
-            // Test data
-            String expectedURL = "https://tutorialsninja.com/demo/index.php?route=account/login";
-            String expectedTitle = "Account Login";
+        // Test data
+        String expectedURL = "https://tutorialsninja.com/demo/index.php?route=account/login";
+        String expectedTitle = "Account Login";
 
-            LoginPage loginPage = new LoginPage(getDriver());
-            loginPage.typeEmail(email);
-            loginPage.typePassword(password);
-            getLogger().info("Entered test data: Email = {}, Password = {}", email, password);
-            loginPage.clickSubmitButton();
-            getLogger().info("Clicked Submit button");
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.typeEmail(email);
+        loginPage.typePassword(password);
+        getLogger().info("Entered test data: Email = {}, Password = {}", email, password);
+        loginPage.clickSubmitButton();
+        getLogger().info("Clicked Submit button");
 
-            // Verification
-            getLogger().info("Verifying Login error message");
-            SoftAssert softAssert = new SoftAssert();
-            softAssert.assertEquals(getDriver().getCurrentUrl(), expectedURL, "URL mismatch");
-            softAssert.assertEquals(getDriver().getTitle(), expectedTitle, "Title mismatch");
-            softAssert.assertTrue(loginPage.existsErrorMessage(), "Error message is not present");
-            softAssert.assertEquals(loginPage.getErrorMessage(), expectedErrorMessage);
-            softAssert.assertAll();
-            getLogger().info("Login test completed successfully");
-
-        } catch (AssertionError assertionError) {
-            getLogger().error("Test case failed: {}",  assertionError.getMessage());
-            throw assertionError;
-        } catch (Exception e) {
-            getLogger().error("Test case failed due to unexpected error: {}", e.getMessage());
-            Assert.fail();
-        }
+        // Verification
+        getLogger().info("Verifying Login error message");
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(getDriver().getCurrentUrl(), expectedURL, "URL mismatch");
+        softAssert.assertEquals(getDriver().getTitle(), expectedTitle, "Title mismatch");
+        softAssert.assertTrue(loginPage.existsErrorMessage(), "Error message is not present");
+        softAssert.assertEquals(loginPage.getErrorMessage(), expectedErrorMessage);
+        softAssert.assertAll();
+        getLogger().info("Login test completed successfully");
     }
 }
