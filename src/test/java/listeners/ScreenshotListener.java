@@ -1,6 +1,5 @@
 package listeners;
 
-
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestListener;
@@ -16,9 +15,14 @@ public class ScreenshotListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         // Get the WebDriver instance from the test class
         // Every Test class inherits from BaseTest class
-        BaseTest currentClass = (BaseTest) result.getInstance();
-        Logger logger = currentClass.getLogger();
-        WebDriver driver = currentClass.getDriver();
+        BaseTest currentInstance= (BaseTest) result.getInstance();
+        if (currentInstance == null) {
+            System.err.println("Test instance is null. Cannot capture screenshot.");
+            return;
+        }
+
+        Logger logger = currentInstance.getLogger();
+        WebDriver driver = currentInstance.getDriver();
 
         String methodName = result.getName();
         String exceptionMessage = result.getThrowable().getMessage();

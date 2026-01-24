@@ -7,12 +7,15 @@ import pages.RegistrationPage;
 
 import java.util.Properties;
 
-public class TC001_AccountRegistration extends BaseTest {
+public class TC001_RegistrationTests extends BaseTest {
 
     private static final String EXPECTED_CONFIRMATION_MESSAGE = "Your Account Has Been Created!";
 
-    @Test
-    public void verifyAccountRegistration() {
+    @Test (
+            priority = 1,
+            groups = "smoke"
+    )
+    public void testAccountRegistration() {
         getLogger().info("Starting account registration test");
 
         // Navigation

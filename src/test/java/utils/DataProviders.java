@@ -10,7 +10,7 @@ public class DataProviders {
     @DataProvider(name = "invalidLoginData")
     public String[][] getInvalidLoginData() throws IOException {
 
-        String excelFilePath = "./testData/OpenCart_LoginData1.xlsx";
+        String excelFilePath = "./testData/OpenCart_LoginData.xlsx";
 
         ExcelUtils excelUtils = new ExcelUtils(excelFilePath);
 

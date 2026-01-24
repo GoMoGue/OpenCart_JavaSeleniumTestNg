@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="MainSuite">
+    <groups>
+        <run>
+            <include name="datadriven"/>
+        </run>
+    </groups>
+    <!-- Listener for capturing screenshots and log exception messages on test failure -->
+    <listeners>
+        <listener class-name="listeners.ScreenshotListener" />
+    </listeners>
+    <test name="DataDrivenTest">
+        <!-- Parameters for browser and OS -->
+        <parameter name="browser" value="Firefox"/>
+        <parameter name="os" value="Linux"/>
+        <classes>
+            <class name="tests.TC002_LoginTests"/>
+            <class name="tests.TC003_SearchTestsDDT"/>
+        </classes>
+    </test>
+</suite>

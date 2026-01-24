@@ -11,7 +11,8 @@ public class TC003_SearchTestsDDT extends BaseTest {
     @Test(
             priority = 1,
             dataProvider = "searchData",
-            dataProviderClass = DataProviders.class
+            dataProviderClass = DataProviders.class,
+            groups = "datadriven"
     )
     public void testSearchWithDataProvider(String searchTerm, String resultsPresent, String expectedTitle, String expectedURL, String expectedMessage) {
 

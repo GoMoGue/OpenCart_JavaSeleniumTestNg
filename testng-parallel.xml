@@ -5,14 +5,14 @@
         <parameter name="browser" value="Firefox"/>
         <parameter name="os" value="Linux"/>
         <classes>
-            <class name="tests.TC001_AccountRegistration"/>
+            <class name="tests.TC001_RegistrationTests"/>
         </classes>
     </test> <!-- Test -->
     <test name="RegistrationTestBrave">
         <parameter name="browser" value="Brave"/>
         <parameter name="os" value="Linux"/>
         <classes>
-            <class name="tests.TC001_AccountRegistration"/>
+            <class name="tests.TC001_RegistrationTests"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

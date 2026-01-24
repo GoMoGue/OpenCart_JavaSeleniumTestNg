@@ -8,9 +8,8 @@
         <parameter name="browser" value="Firefox"/>
         <parameter name="os" value="Linux"/>
         <classes>
-            <class name="TestClass"/>
-            <!--<class name="tests.TC001_AccountRegistration"/>-->
-            <!--<class name="tests.TC003_SearchTestsDDT"/>-->
+            <!--<class name="tests.TC001_RegistrationTests"/>-->
+            <class name="tests.TC003_SearchTestsDDT"/>
             <!--
             <class name="tests.TC002_LoginTests">
                 <methods>

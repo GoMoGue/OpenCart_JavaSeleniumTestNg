@@ -1,6 +1,5 @@
 package tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.HomePage;
@@ -30,7 +29,10 @@ public class TC002_LoginTests extends BaseTest{
         getLogger().info("Clicked Submit button");
     }
 
-    @Test(priority = 1)
+    @Test(
+            priority = 1,
+            groups = "smoke"
+    )
     public void testLoginWithValidCredentials() {
 
         navigateToLoginPage();
@@ -57,7 +59,8 @@ public class TC002_LoginTests extends BaseTest{
     @Test(
             priority = 2,
             dataProvider = "invalidLoginData",
-            dataProviderClass = DataProviders.class
+            dataProviderClass = DataProviders.class,
+            groups = "datadriven"
     )
     public void testLoginWithInvalidCredentials(String email, String password, String expectedErrorMessage) {
 

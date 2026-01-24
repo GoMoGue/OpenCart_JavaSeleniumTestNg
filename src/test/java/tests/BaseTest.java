@@ -6,11 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.ITestResult;
 import org.testng.SkipException;
 import org.testng.annotations.*;
 import utils.ConfigFileLoader;
-import utils.ScreenshotUtils;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -40,7 +38,7 @@ public class BaseTest {
         return properties;
     }
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     @Parameters({"os", "browser"})
     public void setUp(String os, String browser) {
         logger = LogManager.getLogger(getClass());
@@ -77,7 +75,7 @@ public class BaseTest {
         logger.info("WebDriver initialized");
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void logTestDetails(Method method) {
         logger.info(
                 "Starting test: {} | Class: {} | Thread: {} | OS: {} | Browser: {}",
@@ -105,7 +103,7 @@ public class BaseTest {
 //        }
 //    }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
         // Quit driver if it exists
         if (driver != null) {
