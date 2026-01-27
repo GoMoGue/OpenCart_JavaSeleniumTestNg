@@ -6,9 +6,8 @@
             <include name="datadriven"/>
         </run>
     </groups>
-    <!-- Listener for capturing screenshots and log exception messages on test failure -->
     <listeners>
-        <listener class-name="listeners.ScreenshotListener" />
+        <listener class-name="listeners.ExtendReportListener" />
     </listeners>
     <test name="DataDrivenTest">
         <!-- Parameters for browser and OS -->

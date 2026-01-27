@@ -29,6 +29,7 @@ public class TC002_LoginTests extends BaseTest{
         getLogger().info("Clicked Submit button");
     }
 
+
     @Test(
             priority = 1,
             groups = "smoke"
@@ -55,6 +56,7 @@ public class TC002_LoginTests extends BaseTest{
         softAssert.assertAll();
         getLogger().info("Login test completed successfully");
     }
+
 
     @Test(
             priority = 2,

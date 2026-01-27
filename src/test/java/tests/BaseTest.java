@@ -11,11 +11,20 @@ import org.testng.annotations.*;
 import utils.ConfigFileLoader;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.Properties;
 
-
+/**
+ * A base test class for UI automation tests.
+ *
+ * <p>This class provides the foundational setup and teardown for all test classes.
+ * It initializes the {@link WebDriver} instance, loads configuration properties,
+ * and manages the test lifecycle. All test classes should extend this class
+ * to ensure consistent setup and cleanup.</p>
+ *
+ * <p>Supports multiple browsers (e.g., Firefox, Brave) and loads test configuration
+ * from a properties file.</p>
+ */
 public class BaseTest {
 
     private String braveBrowserLocation = "/var/lib/flatpak/exports/bin/com.brave.Browser";
@@ -38,6 +47,23 @@ public class BaseTest {
         return properties;
     }
 
+    public String getBrowser() {
+        return browser;
+    }
+
+    public String getOs() {
+        return os;
+    }
+
+    /**
+     * Sets up the test environment before the test class runs.
+     * <p>This method initializes the logger, loads the configuration properties,
+     * and sets up the WebDriver based on the specified browser and OS.
+     * It also configures the WebDriver with implicit waits and maximizes the browser window.</p>
+     * @param os      The operating system where the test is running.
+     * @param browser The browser to use for the test (e.g., "firefox", "brave").
+     * @throws SkipException If the properties file cannot be loaded or the browser name is invalid.
+     */
     @BeforeClass(alwaysRun = true)
     @Parameters({"os", "browser"})
     public void setUp(String os, String browser) {
@@ -75,34 +101,10 @@ public class BaseTest {
         logger.info("WebDriver initialized");
     }
 
-    @BeforeMethod(alwaysRun = true)
-    public void logTestDetails(Method method) {
-        logger.info(
-                "Starting test: {} | Class: {} | Thread: {} | OS: {} | Browser: {}",
-                method.getName(),                           // Test Method name
-                method.getDeclaringClass().getSimpleName(), // Test Class name
-                Thread.currentThread().getName(),           // Thread name
-                os,
-                browser
-        );
-    }
-
-//    @AfterMethod
-//    public void captureScreenshotOnFailure(ITestResult result) {
-//        // Capture screenshot if driver not null and test case failed
-//        if (driver != null && result.getStatus() == ITestResult.FAILURE) {
-//            logger.error("Test failed: {}", result.getName());
-//            logger.info("Taking screenshot");
-//            String screenshotName = "screenshots/" + result.getName() + "_failed_" + System.currentTimeMillis() + ".png";
-//            try {
-//                ScreenshotUtils.captureFullViewPortScreenshot(driver, screenshotName);
-//            } catch (IOException e) {
-//                logger.error("Failed to capture screenshot: {}", e.getMessage());
-//            }
-//            logger.info("Screenshot saved at: {}", screenshotName);
-//        }
-//    }
-
+    /**
+     * Cleans up the test environment after the test class runs.
+     * <p>This method quits the WebDriver instance if it exists.</p>
+     */
     @AfterClass(alwaysRun = true)
     public void tearDown() {
         // Quit driver if it exists
