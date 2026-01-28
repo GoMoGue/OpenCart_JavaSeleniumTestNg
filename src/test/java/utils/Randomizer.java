@@ -9,7 +9,6 @@ import java.util.UUID;
  * Guaranteed Uniqueness: UUIDs are designed to be unique across space and time. The chance of two UUIDs colliding (being the same) is astronomically low
  * UUIDs follow a standardized format (e.g., 123e4567-e89b-12d3-a456-426614174000), which is useful for logging, debugging, and data organization
  */
-
 public class Randomizer {
 
     // Generate a random email using UUID

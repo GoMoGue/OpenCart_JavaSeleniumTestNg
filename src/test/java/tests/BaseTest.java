@@ -3,12 +3,10 @@ package tests;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.SkipException;
 import org.testng.annotations.*;
 import utils.ConfigFileLoader;
+import utils.DriverFactory;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -27,7 +25,6 @@ import java.util.Properties;
  */
 public class BaseTest {
 
-    private String braveBrowserLocation = "/var/lib/flatpak/exports/bin/com.brave.Browser";
     private String configFileLocation = "./src/test/resources/config.properties";
     private WebDriver driver;
     private Logger logger;
@@ -80,19 +77,7 @@ public class BaseTest {
             throw new SkipException("Skipping test: could not read properties file");
         }
 
-        switch (browser.toLowerCase()) {
-            case "firefox":
-                driver = new FirefoxDriver();
-                break;
-            case "brave":
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.setBinary(braveBrowserLocation);
-                driver = new ChromeDriver(chromeOptions);
-                break;
-            default:
-                logger.error("Invalid browser name: {}. Skipping test.", browser);
-                throw new SkipException("Skipping test: Invalid browser name - " + browser);
-        }
+        driver = DriverFactory.createDriver(browser);
 
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

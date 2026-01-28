@@ -73,7 +73,11 @@ public class ExtendReportListener implements ITestListener {
      */
     @Override
     public void onTestStart(ITestResult testResult) {
-        extentTest = extentReports.createTest(testResult.getMethod().getMethodName());
+        String testName = String.format("%s.%s",
+                testResult.getTestClass().getName(),
+                testResult.getMethod().getMethodName()
+                );
+        extentTest = extentReports.createTest(testName);
         Logger logger = getLogger(testResult);
 
         // Log test start information
@@ -114,6 +118,7 @@ public class ExtendReportListener implements ITestListener {
     @Override
     public void onTestSkipped(ITestResult testResult) {
         extentTest.log(Status.SKIP, "Test skipped");
+        extentTest.log(Status.INFO, testResult.getThrowable());
     }
 
     /**
@@ -155,11 +160,11 @@ public class ExtendReportListener implements ITestListener {
 
         try {
             ScreenshotUtils.captureFullViewPortScreenshot(driver, screenshotName);
+            extentTest.addScreenCaptureFromPath(screenshotName);
+            logger.info("Screenshot saved at: {}", screenshotName);
         } catch (IOException e) {
             logger.error("Failed to capture screenshot: {}", e.getMessage());
         }
-        logger.info("Screenshot saved at: {}", screenshotName);
-        extentTest.addScreenCaptureFromPath(screenshotName);
     }
 
     /**

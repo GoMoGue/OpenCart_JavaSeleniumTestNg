@@ -8,6 +8,19 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * A utility class for reading and extracting data from Excel files.
+ *
+ * <p>This class provides methods to interact with Excel files, such as retrieving
+ * row counts, cell counts, cell data, and entire sheets as 2D arrays. It uses
+ * Apache POI to handle Excel file operations.</p>
+ *
+ * <p>Example usage:</p>
+ * <pre>
+ *     ExcelUtils excelUtils = new ExcelUtils("path/to/excel.xlsx");
+ *     String[][] data = excelUtils.getAllDataInSheet("Sheet1");
+ * </pre>
+ */
 public class ExcelUtils {
 
     private String fileFullPath;
@@ -24,13 +37,14 @@ public class ExcelUtils {
         this.fileFullPath = fileFullPath;
     }
 
-    private void checkFileExistence() throws IOException {
-        Path file = Paths.get(fileFullPath);
-        if (!Files.exists(file) || !Files.isRegularFile(file)) {
-            throw new IOException("File not found or not accessible: " + fileFullPath);
-        }
-    }
-
+    /**
+     * Returns the total number of rows in the specified sheet.
+     *
+     * @param sheetName The name of the sheet.
+     * @return The total number of rows in the sheet.
+     * @throws IOException If the file is not accessible or the sheet does not exist.
+     * @throws IllegalArgumentException If the sheet is not found.
+     */
     public int getRowCount(String sheetName) throws IOException {
 
         try (FileInputStream inputStream = new FileInputStream(fileFullPath);
@@ -44,6 +58,15 @@ public class ExcelUtils {
         }
     }
 
+    /**
+     * Returns the total number of cells in the specified row of the sheet.
+     *
+     * @param sheetName The name of the sheet.
+     * @param rowIndex The index of the row.
+     * @return The total number of cells in the row.
+     * @throws IOException If the file is not accessible or the sheet does not exist.
+     * @throws IllegalArgumentException If the sheet or row is not found.
+     */
     public int getCellCount(String sheetName, int rowIndex) throws IOException {
 
         try (FileInputStream inputStream = new FileInputStream(fileFullPath);
@@ -60,6 +83,16 @@ public class ExcelUtils {
         }
     }
 
+    /**
+     * Returns the data in the specified cell as a string.
+     *
+     * @param sheetName The name of the sheet.
+     * @param rowIndex The index of the row.
+     * @param cellIndex The index of the cell.
+     * @return The data in the cell as a string. Returns an empty string if the cell is blank.
+     * @throws IOException If the file is not accessible or the sheet does not exist.
+     * @throws IllegalArgumentException If the sheet or row is not found.
+     */
     public String getCellData(String sheetName, int rowIndex, int cellIndex) throws IOException {
         try (FileInputStream inputStream = new FileInputStream(fileFullPath);
              Workbook workbook = WorkbookFactory.create(inputStream)) {
@@ -75,11 +108,22 @@ public class ExcelUtils {
             if (cell == null) {
                 return "";
             }
-            //  For blank cells we return an empty string.
+
             return cell.getStringCellValue();
         }
     }
 
+    /**
+     * Returns all data in the specified sheet as a 2D array of strings.
+     *
+     * <p>This method reads all data from the sheet, starting from the second row
+     * (assuming the first row is a header), and returns it as a 2D array.</p>
+     *
+     * @param sheetName The name of the sheet.
+     * @return A 2D array of strings containing all data in the sheet.
+     * @throws IOException If the file is not accessible or the sheet does not exist.
+     * @throws IllegalArgumentException If the sheet is not found.
+     */
     public String[][] getAllDataInSheet(String sheetName) throws IOException {
         try (FileInputStream inputStream = new FileInputStream(fileFullPath);
              Workbook workbook = WorkbookFactory.create(inputStream)) {
@@ -107,7 +151,15 @@ public class ExcelUtils {
         }
     }
 
-    // Helper method to safely get cell value as String
+    /**
+     * Helper method to safely convert a cell's value to a string.
+     *
+     * <p>Handles different cell types (e.g., string, numeric, boolean, formula, blank)
+     * and converts them to their string representation.</p>
+     *
+     * @param cell The cell whose value is to be converted.
+     * @return The cell's value as a string. Returns an empty string for blank cells.
+     */
     private String getCellValueAsString(Cell cell) {
         switch (cell.getCellType()) {
             case STRING:
@@ -126,6 +178,18 @@ public class ExcelUtils {
                 return "";
             default:
                 return "";
+        }
+    }
+
+    /**
+     * Helper private method to test if the Excel file exists and is accessible.
+     *
+     * @throws IOException If the file does not exist or is not accessible.
+     */
+    private void checkFileExistence() throws IOException {
+        Path file = Paths.get(fileFullPath);
+        if (!Files.exists(file) || !Files.isRegularFile(file)) {
+            throw new IOException("File not found or not accessible: " + fileFullPath);
         }
     }
 }
