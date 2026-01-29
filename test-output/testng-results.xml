@@ -1,136 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="10" passed="8" failed="2" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-01-28T14:53:28 GMT" name="Suite" finished-at="2026-01-28T14:54:38 GMT" duration-ms="69451">
+  <suite started-at="2026-01-29T11:34:07 GMT" name="Suite" finished-at="2026-01-29T11:34:25 GMT" duration-ms="17704">
     <groups>
-      <group name="datadriven">
-        <method signature="TC003_SearchTestsDDT.testSearchWithDataProvider(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:tests.TC003_SearchTestsDDT@5c33f1a9]" name="testSearchWithDataProvider" class="tests.TC003_SearchTestsDDT"/>
-        <method signature="TC002_LoginTests.testLoginWithInvalidCredentials(java.lang.String,java.lang.String,java.lang.String)[pri:2, instance:tests.TC002_LoginTests@67c27493]" name="testLoginWithInvalidCredentials" class="tests.TC002_LoginTests"/>
-      </group> <!-- datadriven -->
       <group name="smoke">
-        <method signature="TC001_RegistrationTests.testAccountRegistration()[pri:1, instance:tests.TC001_RegistrationTests@36bc55de]" name="testAccountRegistration" class="tests.TC001_RegistrationTests"/>
-        <method signature="TC002_LoginTests.testLoginWithValidCredentials()[pri:1, instance:tests.TC002_LoginTests@67c27493]" name="testLoginWithValidCredentials" class="tests.TC002_LoginTests"/>
+        <method signature="TC001_RegistrationTests.testAccountRegistration()[pri:1, instance:tests.TC001_RegistrationTests@4cc451f2]" name="testAccountRegistration" class="tests.TC001_RegistrationTests"/>
       </group> <!-- smoke -->
     </groups>
-    <test started-at="2026-01-28T14:53:28 GMT" name="MainTest" finished-at="2026-01-28T14:54:38 GMT" duration-ms="69451">
-      <class name="tests.TC003_SearchTestsDDT">
-        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:tests.TC003_SearchTestsDDT@5c33f1a9]" started-at="2026-01-28T14:53:45 GMT" name="setUp" finished-at="2026-01-28T14:53:50 GMT" duration-ms="4859" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Linux]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[Firefox]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="testSearchWithDataProvider(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:tests.TC003_SearchTestsDDT@5c33f1a9]" started-at="2026-01-28T14:53:51 GMT" name="testSearchWithDataProvider" data-provider="searchData" finished-at="2026-01-28T14:53:52 GMT" duration-ms="916" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[macbook]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[yes]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Search - macbook]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[https://tutorialsninja.com/demo/index.php?route=product/search&search=macbook]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[N/A]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testSearchWithDataProvider -->
-        <test-method signature="testSearchWithDataProvider(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:tests.TC003_SearchTestsDDT@5c33f1a9]" started-at="2026-01-28T14:53:52 GMT" name="testSearchWithDataProvider" data-provider="searchData" finished-at="2026-01-28T14:54:02 GMT" duration-ms="10589" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[macbooken]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[no]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Search - macbooken]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[https://tutorialsninja.com/demo/index.php?route=product/search&search=macbooken]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[There is no product that matches the search criteria.]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testSearchWithDataProvider -->
-        <test-method signature="testSearchWithDataProvider(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:tests.TC003_SearchTestsDDT@5c33f1a9]" started-at="2026-01-28T14:54:02 GMT" name="testSearchWithDataProvider" data-provider="searchData" finished-at="2026-01-28T14:54:13 GMT" duration-ms="10516" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[no]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Search]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[https://tutorialsninja.com/demo/index.php?route=product/search]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[There is no product that matches the search criteria.]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testSearchWithDataProvider -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.TC003_SearchTestsDDT@5c33f1a9]" started-at="2026-01-28T14:54:13 GMT" name="tearDown" finished-at="2026-01-28T14:54:13 GMT" duration-ms="682" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- tests.TC003_SearchTestsDDT -->
+    <test started-at="2026-01-29T11:34:07 GMT" name="MainTest" finished-at="2026-01-29T11:34:25 GMT" duration-ms="17704">
       <class name="tests.TC001_RegistrationTests">
-        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:tests.TC001_RegistrationTests@36bc55de]" started-at="2026-01-28T14:53:28 GMT" name="setUp" finished-at="2026-01-28T14:53:33 GMT" duration-ms="4398" status="PASS">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:tests.TC001_RegistrationTests@4cc451f2]" started-at="2026-01-29T11:34:07 GMT" name="setUp" finished-at="2026-01-29T11:34:12 GMT" duration-ms="4471" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -146,7 +26,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testAccountRegistration()[pri:1, instance:tests.TC001_RegistrationTests@36bc55de]" started-at="2026-01-28T14:53:33 GMT" name="testAccountRegistration" finished-at="2026-01-28T14:53:45 GMT" duration-ms="11951" status="FAIL">
+        <test-method signature="testAccountRegistration()[pri:1, instance:tests.TC001_RegistrationTests@4cc451f2]" started-at="2026-01-29T11:34:12 GMT" name="testAccountRegistration" finished-at="2026-01-29T11:34:24 GMT" duration-ms="12127" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[Confirmation message not present. expected [true] but found [false]]]>
@@ -188,185 +68,11 @@ at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAccountRegistration -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.TC001_RegistrationTests@36bc55de]" started-at="2026-01-28T14:53:45 GMT" name="tearDown" finished-at="2026-01-28T14:53:45 GMT" duration-ms="705" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.TC001_RegistrationTests@4cc451f2]" started-at="2026-01-29T11:34:24 GMT" name="tearDown" finished-at="2026-01-29T11:34:25 GMT" duration-ms="721" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- tests.TC001_RegistrationTests -->
-      <class name="tests.TC002_LoginTests">
-        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:tests.TC002_LoginTests@67c27493]" started-at="2026-01-28T14:54:13 GMT" name="setUp" finished-at="2026-01-28T14:54:17 GMT" duration-ms="3769" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Linux]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[Firefox]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="testLoginWithValidCredentials()[pri:1, instance:tests.TC002_LoginTests@67c27493]" started-at="2026-01-28T14:54:17 GMT" name="testLoginWithValidCredentials" finished-at="2026-01-28T14:54:29 GMT" duration-ms="11587" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[The following asserts failed:
-URL mismatch expected [https://tutorialsninja.com/demo/index.php?route=account/account] but found [https://tutorialsninja.com/demo/index.php?route=account/login],
-Title mismatch expected [My Account] but found [Account Login],
-My Account header not present expected [true] but found [false]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: The following asserts failed:
-URL mismatch expected [https://tutorialsninja.com/demo/index.php?route=account/account] but found [https://tutorialsninja.com/demo/index.php?route=account/login],
-Title mismatch expected [My Account] but found [Account Login],
-My Account header not present expected [true] but found [false]
-at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-at tests.TC002_LoginTests.testLoginWithValidCredentials(TC002_LoginTests.java:56)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:741)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
-at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testLoginWithValidCredentials -->
-        <test-method signature="testLoginWithInvalidCredentials(java.lang.String,java.lang.String,java.lang.String)[pri:2, instance:tests.TC002_LoginTests@67c27493]" started-at="2026-01-28T14:54:29 GMT" name="testLoginWithInvalidCredentials" data-provider="invalidLoginData" finished-at="2026-01-28T14:54:30 GMT" duration-ms="1464" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[emailo2@example.com]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[securePassword1235]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Warning: No match for E-Mail Address and/or Password.]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testLoginWithInvalidCredentials -->
-        <test-method signature="testLoginWithInvalidCredentials(java.lang.String,java.lang.String,java.lang.String)[pri:2, instance:tests.TC002_LoginTests@67c27493]" started-at="2026-01-28T14:54:30 GMT" name="testLoginWithInvalidCredentials" data-provider="invalidLoginData" finished-at="2026-01-28T14:54:32 GMT" duration-ms="1400" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[notemailo1@example.com]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[securePassword1234]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Warning: No match for E-Mail Address and/or Password.]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testLoginWithInvalidCredentials -->
-        <test-method signature="testLoginWithInvalidCredentials(java.lang.String,java.lang.String,java.lang.String)[pri:2, instance:tests.TC002_LoginTests@67c27493]" started-at="2026-01-28T14:54:32 GMT" name="testLoginWithInvalidCredentials" data-provider="invalidLoginData" finished-at="2026-01-28T14:54:33 GMT" duration-ms="1361" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[securePassword1234]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Warning: No match for E-Mail Address and/or Password.]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testLoginWithInvalidCredentials -->
-        <test-method signature="testLoginWithInvalidCredentials(java.lang.String,java.lang.String,java.lang.String)[pri:2, instance:tests.TC002_LoginTests@67c27493]" started-at="2026-01-28T14:54:33 GMT" name="testLoginWithInvalidCredentials" data-provider="invalidLoginData" finished-at="2026-01-28T14:54:36 GMT" duration-ms="2514" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[emailo3@example.com]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Warning: No match for E-Mail Address and/or Password.]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testLoginWithInvalidCredentials -->
-        <test-method signature="testLoginWithInvalidCredentials(java.lang.String,java.lang.String,java.lang.String)[pri:2, instance:tests.TC002_LoginTests@67c27493]" started-at="2026-01-28T14:54:36 GMT" name="testLoginWithInvalidCredentials" data-provider="invalidLoginData" finished-at="2026-01-28T14:54:37 GMT" duration-ms="1357" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Warning: No match for E-Mail Address and/or Password.]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testLoginWithInvalidCredentials -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.TC002_LoginTests@67c27493]" started-at="2026-01-28T14:54:37 GMT" name="tearDown" finished-at="2026-01-28T14:54:38 GMT" duration-ms="553" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- tests.TC002_LoginTests -->
     </test> <!-- MainTest -->
   </suite> <!-- Suite -->
 </testng-results>

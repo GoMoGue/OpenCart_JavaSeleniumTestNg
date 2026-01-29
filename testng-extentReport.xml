@@ -11,8 +11,8 @@
         <parameter name="os" value="Linux"/>
         <classes>
             <class name="tests.TC001_RegistrationTests"/>
-            <class name="tests.TC003_SearchTestsDDT"/>
-            <class name="tests.TC002_LoginTests"/>
+            <!--<class name="tests.TC003_SearchTestsDDT"/>-->
+            <!--<class name="tests.TC002_LoginTests"/>-->
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

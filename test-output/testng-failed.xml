@@ -17,13 +17,6 @@
           <include name="setUp"/>
         </methods>
       </class> <!-- tests.TC001_RegistrationTests -->
-      <class name="tests.TC002_LoginTests">
-        <methods>
-          <include name="testLoginWithValidCredentials"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- tests.TC002_LoginTests -->
     </classes>
   </test> <!-- MainTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

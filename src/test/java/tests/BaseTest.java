@@ -77,7 +77,14 @@ public class BaseTest {
             throw new SkipException("Skipping test: could not read properties file");
         }
 
-        driver = DriverFactory.createDriver(browser);
+        String executionEnvironment = properties.getProperty("execution_environment");
+        if (executionEnvironment.equalsIgnoreCase("local")) {
+            driver = DriverFactory.createDriver(browser);
+        } else if (executionEnvironment.equalsIgnoreCase("remote")) {
+            driver = DriverFactory.createRemoteDriver(browser, os, properties.getProperty("grid_hub_url"));
+        } else {
+            throw new SkipException("Skipping test: Invalid execution environment - " + executionEnvironment);
+        }
 
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

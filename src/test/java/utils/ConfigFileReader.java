@@ -1,0 +1,53 @@
+package utils;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+public class ConfigFileReader {
+
+    private static Properties properties;
+
+    // static initialization block. runs once when the class is loaded into memory,
+    // before any static methods or instances of the class are created.
+    static {
+        try (FileInputStream fis = new FileInputStream("src/test/resources/config.properties")) {
+            properties = new Properties();
+            properties.load(fis);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String getExecutionEnvironment() {
+        return properties.getProperty("execution_environment").trim();
+    }
+
+    public static String getGridHubUrl() {
+        return properties.getProperty("grid_hub_url", "http://localhost:4444").trim();
+    }
+
+    public static String getHomePageURL() {
+        return properties.getProperty("homePageURL").trim();
+    }
+
+    public static String getLoginPageURL() {
+        return properties.getProperty("loginPageURL").trim();
+    }
+
+    public static String getRegistrationPageURL() {
+        return properties.getProperty("registrationPageURL").trim();
+    }
+
+    public static String getMyAccountPageURL() {
+        return properties.getProperty("myAccountPageURL").trim();
+    }
+
+    public static String getEmail() {
+        return properties.getProperty("email").trim();
+    }
+
+    public static String getPassword() {
+        return properties.getProperty("password").trim();
+    }
+}
