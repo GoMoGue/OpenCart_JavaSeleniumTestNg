@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.RegistrationPage;
+import utils.ConfigFileReader;
 
 import java.util.Properties;
 
@@ -27,12 +28,11 @@ public class TC001_RegistrationTests extends BaseTest {
         getLogger().info("Clicked 'Register' link");
 
         // Test data
-        Properties properties = getProperties();
         String firstName = "El";
         String lastName = "John";
-        String email = properties.getProperty("email");
+        String email = ConfigFileReader.getEmail();
         String telephone = "1234567890";
-        String password = properties.getProperty("password");
+        String password = ConfigFileReader.getPassword();
         getLogger().info("Entering test data: Email = {}; password = {}", email, password);
 
         // Registration form

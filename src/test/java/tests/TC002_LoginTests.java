@@ -5,6 +5,7 @@ import org.testng.asserts.SoftAssert;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.MyAccountPage;
+import utils.ConfigFileReader;
 import utils.DataProviders;
 
 public class TC002_LoginTests extends BaseTest{
@@ -40,15 +41,15 @@ public class TC002_LoginTests extends BaseTest{
 
         // Test data
         getLogger().info("Retrieving test data from config file");
-        String email = getProperties().getProperty("email");
-        String password = getProperties().getProperty("password");
+        String email = ConfigFileReader.getEmail();
+        String password = ConfigFileReader.getPassword();
 
         performLoginAction(email, password);
 
         // Verification
         getLogger().info("Verifying Login success");
         MyAccountPage myAccountPage = new MyAccountPage(getDriver());
-        String expectedUrl = getProperties().getProperty("myAccountPageURL");
+        String expectedUrl = ConfigFileReader.getMyAccountPageURL();
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(getDriver().getCurrentUrl(), expectedUrl, "URL mismatch");
         softAssert.assertEquals(getDriver().getTitle(), "My Account", "Title mismatch");

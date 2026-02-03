@@ -1,21 +1,31 @@
 package utils;
 
+import org.testng.SkipException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Utility class for reading configuration properties from a properties file.
+ * This class loads the configuration file once and provides static methods to access the properties.
+ */
 public class ConfigFileReader {
 
     private static Properties properties;
 
-    // static initialization block. runs once when the class is loaded into memory,
-    // before any static methods or instances of the class are created.
+    /**
+     * Static initialization block.
+     * Runs once when the class is loaded into memory, before any static methods or instances are created.
+     * Loads the configuration file "config.properties" from the resources directory.
+     *
+     * @throws SkipException if the properties file cannot be read.
+     */
     static {
         try (FileInputStream fis = new FileInputStream("src/test/resources/config.properties")) {
             properties = new Properties();
             properties.load(fis);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new SkipException("Skipping test: could not read properties file. " + e.getMessage());
         }
     }
 

@@ -5,12 +5,9 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.SkipException;
 import org.testng.annotations.*;
-import utils.ConfigFileLoader;
+import utils.ConfigFileReader;
 import utils.DriverFactory;
-
-import java.io.IOException;
 import java.time.Duration;
-import java.util.Properties;
 
 /**
  * A base test class for UI automation tests.
@@ -25,12 +22,10 @@ import java.util.Properties;
  */
 public class BaseTest {
 
-    private String configFileLocation = "./src/test/resources/config.properties";
     private WebDriver driver;
     private Logger logger;
     private String browser;
     private String os;
-    private Properties properties;
 
     public WebDriver getDriver() {
         return driver;
@@ -38,10 +33,6 @@ public class BaseTest {
 
     public Logger getLogger() {
         return logger;
-    }
-
-    public Properties getProperties() {
-        return properties;
     }
 
     public String getBrowser() {
@@ -69,26 +60,18 @@ public class BaseTest {
         this.browser = browser;
         this.os = os;
 
-        // Load config.properties file
-        try {
-            this.properties = ConfigFileLoader.loadPropertiesFile(configFileLocation);
-        } catch (IOException e) {
-            logger.error("Cannot load properties file: {}.", e.getMessage());
-            throw new SkipException("Skipping test: could not read properties file");
-        }
-
-        String executionEnvironment = properties.getProperty("execution_environment");
+        String executionEnvironment = ConfigFileReader.getExecutionEnvironment();
         if (executionEnvironment.equalsIgnoreCase("local")) {
             driver = DriverFactory.createDriver(browser);
         } else if (executionEnvironment.equalsIgnoreCase("remote")) {
-            driver = DriverFactory.createRemoteDriver(browser, os, properties.getProperty("grid_hub_url"));
+            driver = DriverFactory.createRemoteDriver(browser, os, ConfigFileReader.getGridHubUrl());
         } else {
             throw new SkipException("Skipping test: Invalid execution environment - " + executionEnvironment);
         }
 
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(properties.getProperty("homePageURL"));
+        driver.get(ConfigFileReader.getHomePageURL());
         driver.manage().window().maximize();
         logger.info("WebDriver initialized");
     }
