@@ -6,7 +6,7 @@
     <listener class-name="org.testng.reporters.FailedReporter"/>
     <listener class-name="listeners.ExtendReportListener"/>
   </listeners>
-  <test thread-count="5" name="MainTest(failed)">
+  <test thread-count="5" name="MainTest-Firefox(failed)">
     <parameter name="os" value="Linux"/>
     <parameter name="browser" value="Firefox"/>
     <classes>
@@ -25,5 +25,5 @@
         </methods>
       </class> <!-- tests.TC002_LoginTests -->
     </classes>
-  </test> <!-- MainTest(failed) -->
+  </test> <!-- MainTest-Firefox(failed) -->
 </suite> <!-- Failed suite [Suite] -->

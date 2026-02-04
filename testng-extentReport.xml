@@ -6,7 +6,7 @@
         <listener class-name="org.testng.reporters.FailedReporter" />
         <listener class-name="listeners.ExtendReportListener" />
     </listeners>
-    <test name="MainTest">
+    <test name="MainTest-Firefox">
         <parameter name="browser" value="Firefox"/>
         <parameter name="os" value="Linux"/>
         <classes>

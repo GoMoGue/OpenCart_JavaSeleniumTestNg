@@ -38,8 +38,9 @@ build/
 ### Mac OS ###
 .DS_Store
 
-
+### Test artifacts ###
 screenshots/
 logs/
 reports/
 lib/
+test-output/

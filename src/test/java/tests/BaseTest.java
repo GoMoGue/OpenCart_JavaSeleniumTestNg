@@ -66,7 +66,7 @@ public class BaseTest {
         } else if (executionEnvironment.equalsIgnoreCase("remote")) {
             driver = DriverFactory.createRemoteDriver(browser, os, ConfigFileReader.getGridHubUrl());
         } else {
-            throw new SkipException("Skipping test: Invalid execution environment - " + executionEnvironment);
+            throw new RuntimeException("Invalid execution environment: " + executionEnvironment);
         }
 
         driver.manage().deleteAllCookies();

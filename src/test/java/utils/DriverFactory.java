@@ -7,10 +7,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.SkipException;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Objects;
 
 public class DriverFactory {
 
@@ -24,6 +24,7 @@ public class DriverFactory {
      * @throws RuntimeException If the browser is not supported.
      */
     public static WebDriver createDriver(String browser) {
+        Objects.requireNonNull(browser, "Browser name cannot be null");
 
         WebDriver driver;
 
@@ -40,7 +41,7 @@ public class DriverFactory {
                 driver = new ChromeDriver(chromeOptions);
                 break;
             default:
-                throw new SkipException("Skipping test: Invalid browser name - " + browser);
+                throw new RuntimeException("Invalid browser name:" + browser);
         }
 
         return driver;
@@ -56,6 +57,9 @@ public class DriverFactory {
      * @throws RuntimeException If the browser is not supported or the Grid URL is invalid.
      */
     public static WebDriver createRemoteDriver(String browser, String os, String gridHubUrl) {
+        Objects.requireNonNull(browser, "Browser name cannot be null");
+        Objects.requireNonNull(gridHubUrl, "GridHub URL cannot be null");
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName(browser.toLowerCase());
         capabilities.setPlatform(Platform.fromString(os.toUpperCase()));
@@ -63,7 +67,7 @@ public class DriverFactory {
         try {
             return new RemoteWebDriver(new URL(gridHubUrl), capabilities);
         } catch (MalformedURLException e) {
-            throw new SkipException("Skipping test: Invalid Grid Hub URL - " + gridHubUrl);
+            throw new RuntimeException("Invalid Selenium GridHub URL:" + gridHubUrl, e);
         }
     }
 }
