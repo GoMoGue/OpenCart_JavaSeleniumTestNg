@@ -14,19 +14,19 @@ A **test automation framework** built with **Selenium WebDriver, Java, and TestN
 ---
 
 ## 🛠 **Technologies & Tools**
-   Tool/Technology       | Version/Purpose                                                                                     |
- |-----------------------|----------------------------------------------------------------------------------------------------|
-| Java                  | Programming language                                                                               |
-| Selenium WebDriver    | Browser automation                                                                                 |
-| TestNG                | Test execution, assertions, and reporting                                                          |
-| Apache POI            | Read/write Excel files for data-driven tests                                                       |
-| Log4j2                | Logging test execution details and debugging information                                           |
-| ExtentReports         | Advanced HTML test reporting with screenshots, categories, and execution timelines                |
-| Maven                 | Dependency management and build automation                                                         |
-| OpenCart              | Open-source e-commerce platform (test application)                                                 |
-| **Selenium Grid**     | Distributed test execution across multiple machines and browsers                                    |
-| **Docker**            | Containerization for easy setup and deployment of Selenium Grid nodes                              |
-| Docker Compose        | Orchestrate multi-container Docker applications (e.g., Selenium Hub and Nodes)                     |
+ Tool/Technology    | Version/Purpose                                                                                     |
+ |--------------------|----------------------------------------------------------------------------------------------------|
+| Java 21            | Programming language                                                                               |
+| Selenium WebDriver | Browser automation                                                                                 |
+| TestNG             | Test execution, assertions, and reporting                                                          |
+| Apache POI         | Read/write Excel files for data-driven tests                                                       |
+| Log4j2             | Logging test execution details and debugging information                                           |
+| ExtentReports      | Advanced HTML test reporting with screenshots, categories, and execution timelines                |
+| Maven              | Dependency management and build automation                                                         |
+| OpenCart           | Open-source e-commerce platform (test application)                                                 |
+| **Selenium Grid**  | Distributed test execution across multiple machines and browsers                                    |
+| **Docker**         | Containerization for easy setup and deployment of Selenium Grid nodes                              |
+| Docker Compose     | Orchestrate multi-container Docker applications (e.g., Selenium Hub and Nodes)                     |
 
 ---
 
