@@ -8,12 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-// Logging: Add logging (e.g., log.info("Setting first name: " + firstName)) for debugging.
-// Fluent Design: Consider returning this from methods to enable method chaining
-// Centralizing waits in BasePage class for reusability
-// Add null checks for WebElements before interacting with them
-// Always Clear fields before sending keys to avoid appending text
-
 public class RegistrationPage extends BasePage {
 
     private static final String PAGE_URL = "https://tutorialsninja.com/demo/index.php?route=account/register";

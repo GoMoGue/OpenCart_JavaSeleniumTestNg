@@ -15,15 +15,6 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
     WebElement addToCartSuccessMessage;
 
-    /**
-     * Constructs a new BasePage and initializes its web elements.
-     * <p>This constructor uses {@link PageFactory#initElements(WebDriver, Object)}
-     * to initialize all web elements annotated with {@link FindBy} or {@link FindBys}
-     * in child classes.</p>
-     *
-     * @param driver The {@link WebDriver} instance used to control the browser.
-     * @throws IllegalArgumentException If the provided {@code driver} is null.
-     */
     public ProductPage(WebDriver driver) {
         super(driver);
     }
@@ -37,6 +28,7 @@ public class ProductPage extends BasePage {
     }
 
     public void typeQuantity(String input) {
+        txtInputQuantity.clear();
         txtInputQuantity.sendKeys(input);
     }
 
