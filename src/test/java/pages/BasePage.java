@@ -13,8 +13,8 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class BasePage {
 
-    /** The WebDriver instance used to interact with the browser. */
     private WebDriver driver;
+    private NavbarComponent navbar;
 
     /**
      * Constructs a new BasePage and initializes its web elements.
@@ -27,6 +27,7 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        navbar = new NavbarComponent(driver);
     }
 
     /**
@@ -35,5 +36,9 @@ public class BasePage {
      */
     public WebDriver getDriver() {
         return driver;
+    }
+
+    public NavbarComponent getNavbar() {
+        return navbar;
     }
 }

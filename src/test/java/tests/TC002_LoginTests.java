@@ -8,15 +8,22 @@ import pages.MyAccountPage;
 import utils.ConfigFileReader;
 import utils.DataProviders;
 
+/**
+ * Test class for login functionality.
+ * This class contains test methods to verify both successful and failed login scenarios.
+ */
 public class TC002_LoginTests extends BaseTest{
+
+    private static final String LOGIN_PAGE_TITLE = "Account Login";
+    private static final String MY_ACCOUNT_PAGE_TITLE = "My Account";
 
     private void navigateToLoginPage() {
         // Navigate to Login page
         getLogger().info("Navigating to Login page");
         HomePage homePage = new HomePage(getDriver());
-        homePage.clickMyAccount();
+        homePage.getNavbar().clickMyAccount();
         getLogger().info("Clicked 'My Account' link");
-        homePage.clickLogIn();
+        homePage.getNavbar().clickLogIn();
         getLogger().info("Clicked 'Login' link");
     }
 
@@ -30,7 +37,10 @@ public class TC002_LoginTests extends BaseTest{
         getLogger().info("Clicked Submit button");
     }
 
-
+    /**
+     * Tests login with valid credentials.
+     * Verifies that the user is successfully redirected to the "My Account" page.
+     */
     @Test(
             priority = 1,
             groups = "smoke"
@@ -55,10 +65,18 @@ public class TC002_LoginTests extends BaseTest{
         softAssert.assertEquals(getDriver().getTitle(), "My Account", "Title mismatch");
         softAssert.assertTrue(myAccountPage.existsAccountHeader(), "My Account header not present");
         softAssert.assertAll();
-        getLogger().info("Login test completed successfully");
+        getLogger().info("Login test with valid credentials completed successfully");
     }
 
 
+    /**
+     * Tests login with invalid credentials using data provided by a data provider.
+     * Verifies that the user remains on the login page and sees the appropriate error message.
+     *
+     * @param email               The invalid email address to use for login.
+     * @param password            The invalid password to use for login.
+     * @param expectedErrorMessage The expected error message for invalid login.
+     */
     @Test(
             priority = 2,
             dataProvider = "invalidLoginData",
@@ -70,8 +88,7 @@ public class TC002_LoginTests extends BaseTest{
         navigateToLoginPage();
 
         // Test data
-        String expectedURL = "https://tutorialsninja.com/demo/index.php?route=account/login";
-        String expectedTitle = "Account Login";
+        String expectedURL = ConfigFileReader.getLoginPageURL();
 
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.typeEmail(email);
@@ -84,10 +101,10 @@ public class TC002_LoginTests extends BaseTest{
         getLogger().info("Verifying Login error message");
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(getDriver().getCurrentUrl(), expectedURL, "URL mismatch");
-        softAssert.assertEquals(getDriver().getTitle(), expectedTitle, "Title mismatch");
+        softAssert.assertEquals(getDriver().getTitle(), LOGIN_PAGE_TITLE, "Title mismatch");
         softAssert.assertTrue(loginPage.existsErrorMessage(), "Error message is not present");
         softAssert.assertEquals(loginPage.getErrorMessage(), expectedErrorMessage);
         softAssert.assertAll();
-        getLogger().info("Login test completed successfully");
+        getLogger().info("Login test with invalid credentials completed successfully");
     }
 }

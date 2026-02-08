@@ -1,6 +1,6 @@
 # OpenCart Selenium Test Automation Framework
 
-A **test automation framework** built with **Selenium WebDriver, Java, and TestNG** to automate tests for the [OpenCart](https://www.opencart.com/) e-commerce application. This project was created as a learning exercise for Selenium and TestNG, including **data-driven testing using Apache POI and Excel files**, **advanced reporting with ExtentReports**, and **remote testing with Selenium Grid and Docker containers**.
+A **test automation framework** built with **Selenium WebDriver, Java, and TestNG** to automate tests for the [OpenCart](https://demo.opencart.com/) e-commerce application. This project was created as a learning exercise for Selenium and TestNG, including **data-driven testing using Apache POI and Excel files**, **advanced reporting with ExtentReports**, and **remote testing with Selenium Grid and Docker containers**.
 
 ---
 

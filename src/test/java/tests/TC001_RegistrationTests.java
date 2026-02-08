@@ -22,9 +22,9 @@ public class TC001_RegistrationTests extends BaseTest {
         // Navigation
         getLogger().info("Navigating to Registration page");
         HomePage homePage = new HomePage(getDriver());
-        homePage.clickMyAccount();
+        homePage.getNavbar().clickMyAccount();
         getLogger().info("Clicked 'My Account' link");
-        homePage.clickRegister();
+        homePage.getNavbar().clickRegister();
         getLogger().info("Clicked 'Register' link");
 
         // Test data

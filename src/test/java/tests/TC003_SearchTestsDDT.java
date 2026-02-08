@@ -6,8 +6,22 @@ import pages.HomePage;
 import pages.SearchResultsPage;
 import utils.DataProviders;
 
+/**
+ * Test class for the search functionality
+ * This class tests the search feature of the application using a data provider to supply test data.
+ * It verifies the search results page header, URL, title, and the presence or absence of results.
+ */
 public class TC003_SearchTestsDDT extends BaseTest {
 
+    /**
+     * Tests the search functionality using data provided by the data provider.
+     *
+     * @param searchTerm      The term to search for.
+     * @param resultsPresent  Indicates whether results are expected ("yes" or "no").
+     * @param expectedTitle   The expected title of the search results page.
+     * @param expectedURL     The expected URL of the search results page.
+     * @param expectedMessage The expected message when no results are found (or "N/A" if not applicable).
+     */
     @Test(
             priority = 1,
             dataProvider = "searchData",
