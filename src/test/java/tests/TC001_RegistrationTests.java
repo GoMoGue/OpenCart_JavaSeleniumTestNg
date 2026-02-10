@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.RegistrationPage;
 import utils.ConfigFileReader;
+import utils.Randomizer;
 
 import java.util.Properties;
 
@@ -30,9 +31,9 @@ public class TC001_RegistrationTests extends BaseTest {
         // Test data
         String firstName = "El";
         String lastName = "John";
-        String email = ConfigFileReader.getEmail();
+        String email = Randomizer.generateRandomUUIDEmail();
         String telephone = "1234567890";
-        String password = ConfigFileReader.getPassword();
+        String password = Randomizer.generateRandomAlphabeticStr(8);
         getLogger().info("Entering test data: Email = {}; password = {}", email, password);
 
         // Registration form

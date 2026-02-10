@@ -2,7 +2,6 @@ package tests;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.HomePage;
 import pages.LoginPage;
 import pages.MyAccountPage;
 import utils.ConfigFileReader;
@@ -17,26 +16,6 @@ public class TC002_LoginTests extends BaseTest{
     private static final String LOGIN_PAGE_TITLE = "Account Login";
     private static final String MY_ACCOUNT_PAGE_TITLE = "My Account";
 
-    private void navigateToLoginPage() {
-        // Navigate to Login page
-        getLogger().info("Navigating to Login page");
-        HomePage homePage = new HomePage(getDriver());
-        homePage.getNavbar().clickMyAccount();
-        getLogger().info("Clicked 'My Account' link");
-        homePage.getNavbar().clickLogIn();
-        getLogger().info("Clicked 'Login' link");
-    }
-
-    private void performLoginAction(String email, String password) {
-        // Login form
-        LoginPage loginPage = new LoginPage(getDriver());
-        loginPage.typeEmail(email);
-        loginPage.typePassword(password);
-        getLogger().info("Entered test data: Email = {}, Password = {}", email, password);
-        loginPage.clickSubmitButton();
-        getLogger().info("Clicked Submit button");
-    }
-
     /**
      * Tests login with valid credentials.
      * Verifies that the user is successfully redirected to the "My Account" page.
@@ -47,14 +26,18 @@ public class TC002_LoginTests extends BaseTest{
     )
     public void testLoginWithValidCredentials() {
 
-        navigateToLoginPage();
+        // Go to login page
+        getDriver().get(ConfigFileReader.getLoginPageURL());
 
-        // Test data
+        // Retrieve Test data from config file
         getLogger().info("Retrieving test data from config file");
         String email = ConfigFileReader.getEmail();
         String password = ConfigFileReader.getPassword();
 
-        performLoginAction(email, password);
+        // Perform Login action
+        getLogger().info("Logging in with test data: Email = {}, Password = {}", email, password);
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.performLoginAction(email, password);
 
         // Verification
         getLogger().info("Verifying Login success");
@@ -62,7 +45,7 @@ public class TC002_LoginTests extends BaseTest{
         String expectedUrl = ConfigFileReader.getMyAccountPageURL();
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(getDriver().getCurrentUrl(), expectedUrl, "URL mismatch");
-        softAssert.assertEquals(getDriver().getTitle(), "My Account", "Title mismatch");
+        softAssert.assertEquals(getDriver().getTitle(), MY_ACCOUNT_PAGE_TITLE, "Title mismatch");
         softAssert.assertTrue(myAccountPage.existsAccountHeader(), "My Account header not present");
         softAssert.assertAll();
         getLogger().info("Login test with valid credentials completed successfully");
@@ -85,20 +68,17 @@ public class TC002_LoginTests extends BaseTest{
     )
     public void testLoginWithInvalidCredentials(String email, String password, String expectedErrorMessage) {
 
-        navigateToLoginPage();
+        // Go to login page
+        getDriver().get(ConfigFileReader.getLoginPageURL());
 
-        // Test data
-        String expectedURL = ConfigFileReader.getLoginPageURL();
-
+        // Perform Login action
+        getLogger().info("Logging in with test data: Email = {}, Password = {}", email, password);
         LoginPage loginPage = new LoginPage(getDriver());
-        loginPage.typeEmail(email);
-        loginPage.typePassword(password);
-        getLogger().info("Entered test data: Email = {}, Password = {}", email, password);
-        loginPage.clickSubmitButton();
-        getLogger().info("Clicked Submit button");
+        loginPage.performLoginAction(email, password);
 
         // Verification
         getLogger().info("Verifying Login error message");
+        String expectedURL = ConfigFileReader.getLoginPageURL();
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(getDriver().getCurrentUrl(), expectedURL, "URL mismatch");
         softAssert.assertEquals(getDriver().getTitle(), LOGIN_PAGE_TITLE, "Title mismatch");

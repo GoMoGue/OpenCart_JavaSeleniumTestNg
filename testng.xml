@@ -12,7 +12,7 @@
         <classes>
             <class name="tests.TC001_RegistrationTests"/>
             <class name="tests.TC002_LoginTests"/>
-            <class name="tests.TC003_SearchTestsDDT"/>
+            <class name="tests.TC003_SearchTests"/>
             <class name="tests.TC004_AddToCartTests"/>
         </classes>
     </test> <!-- Test -->

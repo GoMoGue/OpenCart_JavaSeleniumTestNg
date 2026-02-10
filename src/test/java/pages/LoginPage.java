@@ -51,4 +51,10 @@ public class LoginPage extends BasePage{
     public String getErrorMessage() {
         return errorMessage.getText();
     }
+
+    public void performLoginAction(String email, String password) {
+        typeEmail(email);
+        typePassword(password);
+        clickSubmitButton();
+    }
 }

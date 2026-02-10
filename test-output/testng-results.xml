@@ -5,7 +5,7 @@
   <suite started-at="2026-02-08T18:45:16 GMT" name="Suite" finished-at="2026-02-08T18:46:35 GMT" duration-ms="78611">
     <groups>
       <group name="datadriven">
-        <method signature="TC003_SearchTestsDDT.testSearchWithDataProvider(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:tests.TC003_SearchTestsDDT@c8c12ac]" name="testSearchWithDataProvider" class="tests.TC003_SearchTestsDDT"/>
+        <method signature="TC003_SearchTestsDDT.testSearchWithDataProvider(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:tests.TC003_SearchTests@c8c12ac]" name="testSearchWithDataProvider" class="tests.TC003_SearchTests"/>
         <method signature="TC002_LoginTests.testLoginWithInvalidCredentials(java.lang.String,java.lang.String,java.lang.String)[pri:2, instance:tests.TC002_LoginTests@8f4ea7c]" name="testLoginWithInvalidCredentials" class="tests.TC002_LoginTests"/>
       </group> <!-- datadriven -->
       <group name="smoke">
@@ -15,8 +15,8 @@
       </group> <!-- smoke -->
     </groups>
     <test started-at="2026-02-08T18:45:16 GMT" name="MainTest-Firefox" finished-at="2026-02-08T18:46:35 GMT" duration-ms="78611">
-      <class name="tests.TC003_SearchTestsDDT">
-        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:tests.TC003_SearchTestsDDT@c8c12ac]" started-at="2026-02-08T18:45:59 GMT" name="setUp" finished-at="2026-02-08T18:46:03 GMT" duration-ms="4137" status="PASS">
+      <class name="tests.TC003_SearchTests">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:tests.TC003_SearchTests@c8c12ac]" started-at="2026-02-08T18:45:59 GMT" name="setUp" finished-at="2026-02-08T18:46:03 GMT" duration-ms="4137" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -32,7 +32,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testSearchWithDataProvider(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:tests.TC003_SearchTestsDDT@c8c12ac]" started-at="2026-02-08T18:46:04 GMT" name="testSearchWithDataProvider" data-provider="searchData" finished-at="2026-02-08T18:46:04 GMT" duration-ms="903" status="PASS">
+        <test-method signature="testSearchWithDataProvider(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:tests.TC003_SearchTests@c8c12ac]" started-at="2026-02-08T18:46:04 GMT" name="testSearchWithDataProvider" data-provider="searchData" finished-at="2026-02-08T18:46:04 GMT" duration-ms="903" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -63,7 +63,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSearchWithDataProvider -->
-        <test-method signature="testSearchWithDataProvider(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:tests.TC003_SearchTestsDDT@c8c12ac]" started-at="2026-02-08T18:46:04 GMT" name="testSearchWithDataProvider" data-provider="searchData" finished-at="2026-02-08T18:46:15 GMT" duration-ms="10608" status="PASS">
+        <test-method signature="testSearchWithDataProvider(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:tests.TC003_SearchTests@c8c12ac]" started-at="2026-02-08T18:46:04 GMT" name="testSearchWithDataProvider" data-provider="searchData" finished-at="2026-02-08T18:46:15 GMT" duration-ms="10608" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -94,7 +94,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSearchWithDataProvider -->
-        <test-method signature="testSearchWithDataProvider(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:tests.TC003_SearchTestsDDT@c8c12ac]" started-at="2026-02-08T18:46:15 GMT" name="testSearchWithDataProvider" data-provider="searchData" finished-at="2026-02-08T18:46:26 GMT" duration-ms="10519" status="PASS">
+        <test-method signature="testSearchWithDataProvider(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:tests.TC003_SearchTests@c8c12ac]" started-at="2026-02-08T18:46:15 GMT" name="testSearchWithDataProvider" data-provider="searchData" finished-at="2026-02-08T18:46:26 GMT" duration-ms="10519" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -125,11 +125,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSearchWithDataProvider -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.TC003_SearchTestsDDT@c8c12ac]" started-at="2026-02-08T18:46:26 GMT" name="tearDown" finished-at="2026-02-08T18:46:26 GMT" duration-ms="705" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.TC003_SearchTests@c8c12ac]" started-at="2026-02-08T18:46:26 GMT" name="tearDown" finished-at="2026-02-08T18:46:26 GMT" duration-ms="705" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- tests.TC003_SearchTestsDDT -->
+      </class> <!-- tests.TC003_SearchTests -->
       <class name="tests.TC001_RegistrationTests">
         <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:tests.TC001_RegistrationTests@5158b42f]" started-at="2026-02-08T18:45:16 GMT" name="setUp" finished-at="2026-02-08T18:45:21 GMT" duration-ms="4695" status="PASS">
           <params>

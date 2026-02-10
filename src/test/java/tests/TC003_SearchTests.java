@@ -11,10 +11,16 @@ import utils.DataProviders;
  * This class tests the search feature of the application using a data provider to supply test data.
  * It verifies the search results page header, URL, title, and the presence or absence of results.
  */
-public class TC003_SearchTestsDDT extends BaseTest {
+public class TC003_SearchTests extends BaseTest {
 
     /**
      * Tests the search functionality using data provided by the data provider.
+     * Performs a search on the application's home page using the provided search term
+     * and validates the search results page against expected criteria.
+     * This test is data-driven, using a {@link org.testng.annotations.DataProvider}
+     * to supply multiple sets of test data. It verifies the search functionality for both
+     * successful and unsuccessful searches, checking the page title, URL, and the presence
+     * or absence of results as specified. If no results are expected, verifies the "no results" message.</p>
      *
      * @param searchTerm      The term to search for.
      * @param resultsPresent  Indicates whether results are expected ("yes" or "no").
@@ -43,6 +49,7 @@ public class TC003_SearchTestsDDT extends BaseTest {
         Assert.assertEquals(expectedURL, getDriver().getCurrentUrl(), "Test failed: page URL does not match expected");
         getLogger().info("Verifying results page Title");
         Assert.assertEquals(expectedTitle, getDriver().getTitle(), "Test failed: page title does not match expected");
+
         getLogger().info("Verifying results are present");
         int resultsCount = resultsPage.resultsCount();
 
@@ -55,6 +62,7 @@ public class TC003_SearchTestsDDT extends BaseTest {
                 Assert.assertTrue(resultsPage.getNoResultMessage().contains(expectedMessage), "Test failed: no result message does not match expected message");
             }
         }
+
         getLogger().info("Search test completed successfully");
     }
 }
