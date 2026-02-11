@@ -1,0 +1,4 @@
+Search Term,Results Present,Expected Title,Expected URL,Expected Message
+macbook,yes,Search - macbook,https://tutorialsninja.com/demo/index.php?route=product/search&search=macbook,N/A
+macbooken,no,Search - macbooken,https://tutorialsninja.com/demo/index.php?route=product/search&search=macbooken,There is no product that matches the search criteria.
+,no,Search,https://tutorialsninja.com/demo/index.php?route=product/search,There is no product that matches the search criteria.

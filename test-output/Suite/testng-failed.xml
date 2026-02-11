@@ -17,13 +17,6 @@
           <include name="setUp"/>
         </methods>
       </class> <!-- tests.TC002_LoginTests -->
-      <class name="tests.TC001_RegistrationTests">
-        <methods>
-          <include name="testAccountRegistration"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- tests.TC001_RegistrationTests -->
     </classes>
   </test> <!-- MainTest-Firefox(failed) -->
 </suite> <!-- Failed suite [Suite] -->

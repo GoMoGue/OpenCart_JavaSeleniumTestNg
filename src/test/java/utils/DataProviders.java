@@ -1,5 +1,6 @@
 package utils;
 
+import com.opencsv.exceptions.CsvException;
 import org.testng.annotations.DataProvider;
 
 import java.io.IOException;
@@ -42,22 +43,21 @@ public class DataProviders {
     }
 
     /**
-     * Provides search test data from an Excel file.
+     * Provides search test data from an CSV file.
      *
-     * <p>This method reads data from the "Sheet1" of the "OpenCart_SearchData.xlsx" file
+     * <p>This method reads data from the  "OpenCart_SearchData.csv" file
      * and returns it as a 2D array of strings. Each row in the array represents a set of
      * test data for search scenarios.</p>
      *
      * @return A 2D array of strings containing search data.
-     * @throws IOException If there is an error reading the Excel file.
+     * @throws IOException If there is an error reading the CSV file.
+     * @throws CsvException If there is an error parsing the CSV.
      */
     @DataProvider(name = "searchData")
-    public String[][] getSearchData() throws IOException {
+    public String[][] getSearchData() throws IOException, CsvException {
 
-        String excelFilePath = "./testData/OpenCart_SearchData.xlsx";
+        String csvFilePath = "./testData/OpenCart_SearchData.csv";
 
-        ExcelUtils excelUtils = new ExcelUtils(excelFilePath);
-
-        return excelUtils.getAllDataInSheet("Sheet1");
+        return CsvUtils.readAllData(csvFilePath);
     }
 }
