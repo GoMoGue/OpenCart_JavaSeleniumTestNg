@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchResultsPage extends BasePage {
@@ -39,11 +40,16 @@ public class SearchResultsPage extends BasePage {
     }
 
     /**
-     * Gets the list of link elements displayed in the search results.
-     * @return A list of WebElements representing the product links.
+     * Gets the displayed text of all product links on the page.
+     * @return A list of strings representing the displayed text of each product link.
      */
-    public List<WebElement> getProductLinks() {
-        return productLinks;
+    public List<String> getProductNames() {
+        List<String> productNames = new ArrayList<>();
+        for (WebElement link : productLinks) {
+            String linkText = link.getText().trim();
+            productNames.add(linkText);
+        }
+        return productNames;
     }
 
     /**
@@ -63,8 +69,8 @@ public class SearchResultsPage extends BasePage {
     }
 
     /**
-     * Gets the text of the "No results" message.
-     * @return The text of the "No results" message.
+     * Gets the text of the "No results found" message.
+     * @return The text of the "No results found" message.
      */
     public String getNoResultMessage() {
         return noResultsMessage.get(0).getText();

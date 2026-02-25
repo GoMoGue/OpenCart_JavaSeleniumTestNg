@@ -22,13 +22,12 @@ import java.time.Duration;
  */
 public class BaseTest {
 
-    private WebDriver driver;
     private Logger logger;
     private String browser;
     private String os;
 
     public WebDriver getDriver() {
-        return driver;
+        return DriverFactory.getDriver();
     }
 
     public Logger getLogger() {
@@ -60,32 +59,22 @@ public class BaseTest {
         this.browser = browser;
         this.os = os;
 
-        String executionEnvironment = ConfigFileReader.getExecutionEnvironment();
-        if (executionEnvironment.equalsIgnoreCase("local")) {
-            driver = DriverFactory.createDriver(browser);
-        } else if (executionEnvironment.equalsIgnoreCase("remote")) {
-            driver = DriverFactory.createRemoteDriver(browser, os, ConfigFileReader.getGridHubUrl());
-        } else {
-            throw new RuntimeException("Invalid execution environment: " + executionEnvironment);
-        }
+        // Initialize the driver using DriverFactory
+        DriverFactory.initializeDriver(browser, os);
 
-        driver.manage().deleteAllCookies();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(ConfigFileReader.getHomePageURL());
-        driver.manage().window().maximize();
-        logger.info("WebDriver initialized");
+        // Configure the driver
+        getDriver().manage().deleteAllCookies();
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        getDriver().get(ConfigFileReader.getHomePageURL());
+        getDriver().manage().window().maximize();
     }
 
     /**
      * Cleans up the test environment after the test class runs.
-     * <p>This method quits the WebDriver instance if it exists.</p>
      */
     @AfterClass(alwaysRun = true)
     public void tearDown() {
-        // Quit driver if it exists
-        if (driver != null) {
-            driver.quit();
-            logger.info("Webdriver quit");
-        }
+        // Quit driver using DriverFactory
+        DriverFactory.quitDriver();
     }
 }

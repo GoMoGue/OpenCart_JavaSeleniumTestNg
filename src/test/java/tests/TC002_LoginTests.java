@@ -17,8 +17,9 @@ public class TC002_LoginTests extends BaseTest{
     private static final String MY_ACCOUNT_PAGE_TITLE = "My Account";
 
     /**
-     * Tests login with valid credentials.
+     * Tests login with valid email and password credentials.
      * Verifies that the user is successfully redirected to the "My Account" page.
+     *
      */
     @Test(
             priority = 1,
